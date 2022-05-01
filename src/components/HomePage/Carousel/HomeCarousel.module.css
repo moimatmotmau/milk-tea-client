@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&display=swap');
+.carousel {
+    height: 120vh;
+}
+
+.carousel :global(.carousel-indicators) {
+    display: none;
+}
+
+.carousel_item img {
+    height: 120vh;
+    object-fit: cover;
+}
+
+.carousel_item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.carousel_vmilk {
+    font-size: 46px;
+    letter-spacing: 1.2px;
+    color: #d3b673;
+    font-family: 'Baloo 2', cursive;
+}
+
+.carousel_title {
+    color: #ffffff;
+    font-size: 54px;
+    letter-spacing: 2.7px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-family: 'Baloo 2', cursive;
+}
+
+.carousel_description {
+    letter-spacing: 0.9px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+
+.carousel_link {
+    border: 1px solid #d3b673;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #d3b673;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.3s ease;
+}
+
+.carousel_link:hover {
+    background-color: #d3b673;
+    border: none;
+    color: #fff;
+}
+
+.carousel_scroll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.carousel_scroll_icon {
+    font-size: 36px;
+    margin-bottom: 16px;
+    animation: scroll 1s infinite linear;
+}
+
+@keyframes scroll {
+    0%,
+    100% {
+        transform: translateY(10px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+/* Small devices (landscape phones, 576px and up) */
+
+@media (max-width: 576px) {
+    .carousel :global(.carousel-control-next),
+    .carousel :global(.carousel-control-prev) {
+        display: none;
+    }
+    .carousel {
+        height: 75vh;
+    }
+    .carousel_item img {
+        height: 75vh;
+    }
+    .carousel_caption {
+        padding-top: 30px;
+    }
+    .carousel_vmilk {
+        font-size: 23px;
+        letter-spacing: 1.1px;
+    }
+    .carousel_title {
+        font-size: 24px;
+        letter-spacing: 1.6px;
+        margin-bottom: 30px;
+    }
+    .carousel_description {
+        display: none;
+    }
+    .carousel_scroll {
+        margin-top: 30px;
+    }
+    .carousel_scroll p {
+        margin: 0;
+    }
+    .carousel_scroll_icon {
+        font-size: 20px;
+        margin-bottom: 16px;
+    }
+}
+
+
+/* // Medium devices (tablets, 768px and up) */
+
+@media (min-width: 576px) and (max-width: 768px) {
+    .carousel :global(.carousel-control-next),
+    .carousel :global(.carousel-control-prev) {
+        display: none;
+    }
+    .carousel {
+        height: 100vh;
+    }
+    .carousel_item img {
+        height: 100vh;
+    }
+    .carousel_caption {
+        padding-top: 30px;
+    }
+    .carousel_vmilk {
+        font-size: 23px;
+        letter-spacing: 1.1px;
+    }
+    .carousel_title {
+        font-size: 24px;
+        letter-spacing: 1.6px;
+        margin-bottom: 30px;
+    }
+    .carousel_description {
+        display: none;
+    }
+    .carousel_scroll {
+        margin-top: 30px;
+    }
+    .carousel_scroll p {
+        margin: 0;
+    }
+    .carousel_scroll_icon {
+        font-size: 20px;
+        margin-bottom: 16px;
+    }
+}
+
+
+/* // Large devices (desktops, 992px and up) */
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .carousel :global(.carousel-control-next),
+    .carousel :global(.carousel-control-prev) {
+        display: none;
+    }
+    .carousel {
+        height: 100vh;
+    }
+    .carousel_item img {
+        height: 100vh;
+    }
+    .carousel_caption {
+        padding-bottom: 0;
+    }
+    .carousel_vmilk {
+        font-size: 36px;
+    }
+    .carousel_title {
+        font-size: 38px;
+        letter-spacing: 1.8px;
+        margin-bottom: 50px;
+    }
+    .carousel_description {
+        display: none;
+    }
+    .carousel_scroll {
+        margin-top: 30px;
+    }
+    .carousel_scroll p {
+        margin: 0;
+    }
+    .carousel_scroll_icon {
+        font-size: 20px;
+        margin-bottom: 16px;
+    }
+}

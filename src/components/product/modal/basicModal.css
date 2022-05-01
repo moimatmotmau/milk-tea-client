@@ -1,0 +1,257 @@
+.custom-box-modal {
+  overflow-y: hidden !important;
+  height: 75%;
+  padding: 2rem !important;
+}
+
+.modal-content-up {
+  width: 100%;
+  justify-content: center;
+  opacity: 0.95;
+}
+
+.modal-img {
+  width: 37%;
+  height: 87%;
+}
+
+.modal-img img {
+  background: no-repeat center;
+  width: 100%;
+  border-radius: 5%;
+}
+
+.modal-info {
+  height: 100%;
+  padding-left: 1% !important;
+}
+
+.modal-info-title {
+  font-size: 120%;
+  font-weight: 600;
+}
+
+.modal-info-price {
+  color: #bb9957;
+  margin: 5% 0;
+  font-size: 102%;
+}
+
+.modal-info-price del {
+  color: black;
+  font-size: 90%;
+  margin-left: 5%;
+}
+
+.modal-info-quantity-total {
+  height: auto;
+  margin: 5% 0;
+  font-size: 110%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-info-quantity {
+  text-align: center;
+}
+
+.custom-icon {
+  color: #799dd9;
+  font-size: 140% !important;
+  cursor: pointer;
+}
+
+.modal-info-total {
+  background: #d8b979 !important;
+  cursor: pointer;
+}
+
+.modal-content-down {
+  margin-top: 2%;
+  height: 56%;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none !important;
+}
+
+/* style horizontal scrollbar by CSS? */
+.custom-box-modal ::-webkit-scrollbar {
+  height: 4px !important;
+  width: 4px;
+  background: gray;
+}
+
+/* Track */
+.custom-box-modal ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.custom-box-modal ::-webkit-scrollbar-thumb {
+  background: #d8b979;
+}
+
+.modal-content-down p {
+  font-size: 105%;
+  font-weight: 600;
+  margin-bottom: 2%;
+  height: auto;
+}
+
+.modal-select {
+  margin: 3% 0;
+}
+
+.wrap-input {
+  background: white;
+  margin-left: 2%;
+  padding: 2.5% 0;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.custom-modal-input {
+  margin: 0 2%;
+}
+
+.custom-input {
+  margin-right: 5%;
+  font-size: 105%;
+  border: none;
+  cursor: pointer;
+  margin-left: -8%;
+}
+
+.custom-checkbox {
+  cursor: pointer;
+  margin-right: 1%;
+}
+
+.modal-content-down label {
+  cursor: pointer;
+}
+
+.custom-checkbox {
+  margin-left: 0;
+}
+
+.custom-modal-checkbox {
+  padding-left: 3%;
+  cursor: pointer;
+  font-size: 95%;
+}
+
+.custom-modal-checkbox-price {
+  text-align: center;
+  font-size: 95%;
+}
+
+.custom-icon-close {
+  position: fixed;
+  height: auto;
+  width: auto;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.custom-icon-close:hover {
+  color: gray !important;
+}
+
+@media screen and (max-width: 1440px) {
+  .modal-content-down {
+    height: 55% !important;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .modal-content-down {
+    height: 50% !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .custom-box-modal {
+    width: 90% !important;
+    height: 80% !important;
+  }
+
+  .modal-content-down {
+    height: 50% !important;
+  }
+
+  .custom-modal-total-pay button {
+    font-size: 84% !important;
+  }
+
+  .custom-modal-btn-pay button {
+    font-size: 84% !important;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .custom-box-modal {
+    width: 90% !important;
+    height: 85% !important;
+    margin-top: 7%;
+  }
+
+  .modal-content-up {
+    height: 25%;
+    margin-bottom: 15%;
+    font-size: 93%;
+  }
+
+  .modal-img {
+    width: 50%;
+  }
+
+  .modal-img img {
+    height: 170px !important;
+  }
+
+  .modal-info-total {
+    padding: 6% 10%;
+    font-size: 95%;
+  }
+
+  .modal-info-title {
+    font-size: 110% !important;
+    margin-bottom: 10%;
+  }
+
+  .modal-info-price {
+    color: #936812;
+    margin-bottom: 10%;
+  }
+
+  .modal-info-quantity {
+    font-size: 95% !important;
+    margin-bottom: 10%;
+  }
+
+  .custom-modal-btn-pay {
+    margin-top: 5%;
+  }
+
+  .modal-content-down {
+    font-size: 100%;
+    margin-top: -10% !important;
+    height: 50% !important;
+  }
+
+  .custom-modal-input {
+    font-size: 82%;
+  }
+
+  .custom-select-topping .wrap-input {
+    padding-left: 3% !important;
+    font-size: 86%;
+  }
+
+  .custom-modal-checkbox-price {
+    text-align: center !important;
+  }
+}

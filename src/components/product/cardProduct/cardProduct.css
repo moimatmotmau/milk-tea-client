@@ -1,0 +1,75 @@
+.custom-card {
+  width: 29%;
+  margin: 5px 5px;
+  cursor: pointer;
+  padding-top: 2%;
+}
+.products .custom-card {
+  height: 240px;
+}
+.custom-card-img-top {
+  background: gray;
+  height: 65%;
+  overflow: hidden;
+  object-fit: cover;
+}
+.products .custom-card img {
+  height: 100%;
+  transition: transform 0.5s ease;
+}
+.products .custom-card:hover img {
+  transform: scale(1.5);
+}
+.custom-card .card-body {
+  width: 99%;
+  height: 34%;
+  padding: 1% 15%;
+}
+.products .card-title {
+  width: 144% !important;
+  height: 40%;
+  font-size: 98%;
+  font-weight: 450;
+  margin-top: 3%;
+  margin-left: -22%;
+}
+.custom-card .card-text {
+  width: 150%;
+  margin-left: -20%;
+  color: #8a733f;
+  font-weight: 600;
+  text-align: center;
+}
+.custom-card .card-text del {
+  width: auto !important;
+  font-weight: 100 !important;
+  color: black !important;
+  font-size: 90%;
+  margin-left: -4%;
+}
+.custom-card .card-icon {
+  font-size: 90%;
+  color: #799dd9;
+}
+@media screen and (max-width: 750px) {
+  .card-title {
+    font-size: 90%;
+  }
+  .card-text {
+    font-size: 80% !important;
+  }
+  .products .card-title{
+    font-size: 80%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .card-title {
+    font-size: 90%;
+  }
+  .card-text {
+    font-size: 80% !important;
+  }
+  .products .card-title{
+    font-size: 80%;
+  }
+}

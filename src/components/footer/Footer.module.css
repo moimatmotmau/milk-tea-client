@@ -1,0 +1,56 @@
+:root{
+    --primary-text: #d3b673;
+}
+
+.footer{
+    background-image: url('./Footer_Image/footer_bg.png');
+    background-position: center;
+    background-size: cover;
+    margin-top: 16px;
+}
+.footerOverlay{
+    background-color: rgba(62, 57, 53,0.88);
+    height: 100%;
+}
+.footerInfor{
+    border-bottom: 1px solid #fff;
+}
+.footerTitle{
+    color: var(--primary-text);
+}
+.contactIcon{
+    color: var(--primary-text);
+}
+.configItem{
+    font-size: .85rem;
+}
+
+.icon_box {
+    margin-right: 16px;
+}
+
+.socialIcon{
+    color: var(--primary-text);
+}
+.socialIcon:hover{
+    color: var(--primary-text);
+    filter: brightness(90%);
+}
+
+
+.QRCode{
+    width: 30%;
+    height: auto;
+}
+
+@media screen and (max-width: 992px) {
+    .copyRight > p{
+        text-align: center;
+        line-height: 1.5rem;
+        font-size: .9rem;
+        margin-bottom: 1rem;
+    }
+    .icon_box {
+        margin-right: 8px;
+    }
+}

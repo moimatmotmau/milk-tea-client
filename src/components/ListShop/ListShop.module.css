@@ -1,0 +1,44 @@
+.shop {
+    padding-bottom: 30px;
+}
+
+.banner {
+    height: 300px;
+    width: 100vw;
+    position: relative;
+}
+.banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.banner_img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.banner_title {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 38px;
+    color: #d3b673;
+    font-family: 'Baloo 2', cursive;
+    text-transform: uppercase;
+}
+
+.list_shop {
+    padding-top: 36px;
+}
+
+.list_shop_title {
+    font-family: 'Baloo 2', cursive;
+    font-size: 36px;
+}

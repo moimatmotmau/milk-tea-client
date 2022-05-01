@@ -1,0 +1,27 @@
+.list_shop {
+    margin-top: 16px;
+    color: rgba(0, 0, 0, .7);
+}
+
+.title {
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.list_shop_container {
+    margin-top: 16px;
+    width: 100%;
+}
+.list_shop_container th {
+    font-weight: 600;
+    font-size: 18px;
+}
+.list_shop_container td {
+    font-weight: 400;
+    padding-top: 12px;
+}
+
+.number {
+    width: 42px;
+}

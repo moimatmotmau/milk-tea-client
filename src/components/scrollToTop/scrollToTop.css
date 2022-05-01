@@ -1,0 +1,35 @@
+.scrollToTop {
+  position: fixed;
+  /* left: 72%; */
+  right: 50px;
+  bottom: 50px;
+  z-index: 1;
+}
+
+.scrollToTop button {
+  width: 40px;
+  height: 40px;
+  border: 2px solid orange;
+  border-radius: 50%;
+}
+
+.scrollToTop .icon {
+  margin-top: 10px;
+  animation: scrollToTop 0.5s alternate ease infinite;
+}
+
+@keyframes scrollToTop {
+  from {
+    transform: translateY(-6px);
+  }
+
+  to {
+    transform: translateY(-3px);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .scrollToTop {
+    display: none;
+  }
+}

@@ -1,0 +1,29 @@
+.formInput {
+    margin-left: 0 !important;
+    border: 1px solid #999;
+    border-radius: 0;
+    margin-right: 5px;
+    width: 100%;
+}
+
+.messageModal {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    opacity: 0.5;
+    transition: 1s ease;
+    transform: translate(-50%, -150%);
+    background-color: #ffcc89;
+    color: #b16400;
+    display: flex;
+    align-items: center;
+    padding: 16px 28px;
+    border-radius: 3px;
+    box-shadow: 0 0 10px 0px;
+}
+
+.messageModal .messageMessage {
+    font-size: 0.8rem;
+    margin-right: 20px;
+    flex-grow: 1;
+}

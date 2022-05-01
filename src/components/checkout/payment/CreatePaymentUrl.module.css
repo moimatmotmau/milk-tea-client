@@ -1,0 +1,51 @@
+.payButton {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px 0px;
+    border-radius: 3px;
+    background-color: #fff;
+    z-index: 101;
+    padding: 24px;
+}
+
+.payButton img {
+    position: relative;
+}
+
+.payButton .button {
+    position: absolute;
+    text-decoration: none;
+    top: 30%;
+    left: 50%;
+    min-width: 250px;
+    text-align: center;
+    transform: translate(-50%, -30%);
+    z-index: inherit;
+    padding: 8px 24px;
+    border: 2px solid #ccc;
+    background-color: #fff;
+    border-radius: 3px;
+    color: #ccc;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.payButton .button:hover {
+    color: #5073ba;
+    border: 2px solid #5073ba;
+}
+
+.overlay {
+    background-color: #000;
+    opacity: 0.4;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    transition: 0.4s ease;
+    z-index: 100;
+}

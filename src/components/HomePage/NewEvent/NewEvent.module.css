@@ -1,0 +1,106 @@
+.new_event {
+    margin-top: 50px;
+}
+
+.event_text_wrap {
+    text-align: center;
+}
+
+.event_sub_title {
+    color: #d3b673;
+    font-size: 22px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.event_title {
+    font-size: 36px;
+    letter-spacing: 1.8px;
+    font-family: 'Baloo 2', cursive;
+    text-transform: uppercase;
+    padding: 0 50px;
+    margin-top: 16px;
+    line-height: 1.5;
+}
+
+.event_col {
+    margin-bottom: 20px;
+}
+
+.event_link {
+    text-decoration: none;
+}
+
+.event_img_wrap {
+    overflow: hidden;
+}
+
+.event_img_card {
+    object-fit: cover;
+    transform: scale(1.1);
+    transition: .3s;
+}
+
+.event_link:hover .event_img_card {
+    transform: scale(1.2);
+}
+
+.event_card_body {
+    background-color: #f5f5f5;
+    min-height: 120px;
+}
+
+.event_card_title {
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    color: #282828;
+    font-weight: 700;
+    overflow: hidden;
+    /* width: 100px; */
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+}
+
+.event_card_text {
+    margin-top: 32px;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    color: initial;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.event_card_btn {
+    padding: 8px 16px;
+    text-transform: uppercase;
+    border: none;
+    color: #fff;
+    background-color: #d3b673;
+    text-decoration: none;
+    margin-top: 16px;
+    border: 1px solid #d3b673;
+}
+
+.event_card_btn:hover {
+    background-color: unset;
+    color: #d3b673;
+}
+
+@media (max-width: 991px) {
+    .event_title {
+        font-size: 20px;
+    }
+    .event_card_title {
+        font-size: 11px;
+    }
+    .event_card_text {
+        font-size: 11px;
+    }
+}

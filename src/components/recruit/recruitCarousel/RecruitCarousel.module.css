@@ -1,0 +1,148 @@
+@font-face {
+    font-family: "MijasUltra";
+    src: url("../fonts/vietnameseFonts/MijasUltra.otf");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Gotham-Medium";
+    src: url("../fonts/vietnameseFonts/Gotham-Medium.otf");
+    font-weight: bold;
+}
+
+.BgCover {
+    background-color: #000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.4;
+}
+
+.CarouselCaption {
+    top: calc(180px + 1vw);
+}
+
+.container {
+    font-size: 100%;
+    width: 100%;
+}
+
+.text1 {
+    font-size: 3vw;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+    text-align: center;
+    color: #dfbb68;
+    font-family: "Gotham-Medium" !important;
+    letter-spacing: 4px;
+}
+
+.text2 {
+    margin-top: 24px;
+    font-size: 4vw;
+    color: #ffffff;
+    text-align: center;
+    letter-spacing: 2.7px;
+    line-height: 1;
+    text-transform: uppercase;
+    font-family: "MijasUltra", Helvetica, Arial, sans-serif !important;
+}
+
+.carouselButton {
+    border: 1px solid #D3B673;
+    outline: none;
+    padding: 8px 24px;
+    font-family: "Helvetica Neue", Helvetica, Arial;
+    font-weight: 500;
+    color: #D3B673;
+    background-color: transparent;
+    transition: 0.3s ease;
+    border-radius: 3px;
+    margin-top: 100px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.carouselButton:hover {
+    background-color: #D3B673;
+    color: #fff;
+}
+
+@media (min-width: 768px) and (max-width: 991.999px) {
+    .CarouselCaption {
+        top: calc(200px - 6vw);
+    }
+    .text1 {
+        margin-top: 12px;
+    }
+    .text2 {
+        margin-top: 12px;
+    }
+    .carouselButton {
+        padding: 8px 30px;
+        margin-top: 5vw;
+        font-size: 2vw;
+    }
+}
+
+@media (max-width: 767.999px) {
+    .CarouselCaption {
+        top: calc(200px - 11vw);
+    }
+    .carouselButton {
+        margin-top: 4vw;
+        padding: 8px 28px;
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 767.999px) and (min-width:480.001px) {
+    .CarouselCaption {
+        top: calc(120px - 3vw);
+    }
+    .carouselButton {
+        margin-top: 5vw;
+        padding: 8px 16px;
+    }
+    .text1 {
+        font-size: 1.2rem;
+    }
+    .text2 {
+        margin-top: 12px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .CarouselCaption {
+        top: 48px;
+    }
+    .carouselButton {
+        padding: 6px 10px;
+    }
+    .text1 {
+        font-size: 0.8rem;
+    }
+    .text2 {
+        margin-top: 12px;
+    }
+}
+
+@media (max-width: 360px) {
+    .CarouselCaption {
+        top: 48px;
+    }
+    .carouselButton {
+        margin-top: 3vw;
+        padding: 4px 8px;
+    }
+    .text1,
+    .text2 {
+        font-size: 0.7rem;
+    }
+    .text2 {
+        margin-top: 12px;
+    }
+}

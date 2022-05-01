@@ -1,0 +1,207 @@
+@media only screen and (max-width: 425px) {
+    .popup_login_content {
+        width: 90vw;
+        min-height: 75vh;
+        padding: 24px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .wrap_popup_login_content {
+        padding-top: 50px;
+    }
+    .popup_login_content {
+        width: 90vw;
+        padding: 24px 30px !important;
+        min-height: 75vh;
+    }
+    .logo_toco {
+        margin-bottom: 40px;
+    }
+}
+
+.messageModal {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    opacity: 0.5;
+    transition: 1s ease;
+    transform: translate(-50%, -150%);
+    background-color: #ffcc89;
+    color: #b16400;
+    display: flex;
+    align-items: center;
+    padding: 16px 28px;
+    border-radius: 3px;
+    box-shadow: 0 0 10px 0px;
+}
+
+.messageModal .messageMessage {
+    font-size: 0.8rem;
+    margin-right: 20px;
+    flex-grow: 1;
+}
+
+.wrap_popup_login_content {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../login/img/f4898cd66b50a40efd41.jpg) no-repeat center;
+    background-size: cover;
+    margin-bottom: -16px;
+}
+
+.form_control {
+    width: 300px;
+    height: 40px;
+    margin-left: 0 !important;
+    justify-content: center !important;
+    align-self: start !important;
+    border-radius: 20px 20px 20px;
+    border: none;
+}
+
+.popup_login_content {
+    width: 550px;
+    /* height: 90%; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 10px;
+    padding: 24px 120px;
+    margin-top: 5%;
+    margin-bottom: 2%;
+}
+
+.logo_toco {
+    margin-bottom: 40px;
+    width: 200px;
+    margin-bottom: 20px;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.register_description {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    display: none;
+}
+
+.popup_login_content .form_input {
+    background: 0 0;
+    outline: unset;
+    border: none;
+    padding: 10px 0;
+    font-size: 14px;
+    width: 100%;
+    outline: 0 !important;
+    box-shadow: none;
+}
+
+.popup_login_input {
+    text-align: center;
+    background: 0 0;
+    outline: unset;
+    border: none;
+    font-size: 14px;
+    border-bottom: 1px solid #d6cdbc;
+    width: 100%;
+    outline: 0 !important;
+    box-shadow: none;
+}
+
+.form_input {
+    margin-left: 500px;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.buton {
+    margin-left: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.input_err {
+    color: red;
+    font-style: italic;
+    font-size: 12px;
+    font-weight: 300;
+    align-self: flex-start;
+}
+
+
+/* .err_nomatch {
+    height: 18px;
+} */
+
+.btn_yellow {
+    background: #d8b979;
+    box-shadow: 0 3px 25px 0 rgb(0 0 0 / 20%);
+    color: #ffffff;
+    margin-top: 10px;
+    font-size: 14px;
+    overflow: visible;
+    min-height: 42px;
+    height: auto;
+    display: flex;
+    line-height: normal;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 5px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+}
+
+.btn {
+    margin-top: 10px;
+    font-size: 14px;
+    overflow: visible;
+    min-height: 42px;
+    height: auto;
+    display: flex;
+    line-height: normal;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 5px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+}
+
+.sugget_text {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.link {
+    font-weight: bold;
+    color: #d4b774;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.alink {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+.span_text {
+    vertical-align: inherit;
+}
