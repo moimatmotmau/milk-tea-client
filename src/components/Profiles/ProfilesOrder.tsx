@@ -63,8 +63,8 @@ function ProfilesOrder() {
               <th>Địa chỉ</th>
               <th> Số điện thoại</th>
               <th>Chi tiết</th>
-              <th>Thanh toán</th>
               <th>Trạng thái</th>
+              <th>Thanh toán</th>
             </tr>
           </thead>
           <tbody>

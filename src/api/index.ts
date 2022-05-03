@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const URL =`http://localhost:5000`
+const URL =`https://vmilkteaapi.herokuapp.com`
 export const fetchProducts = () => axios.get(`${URL}/products`);
 
 export const usersApi= `${URL}/users`
