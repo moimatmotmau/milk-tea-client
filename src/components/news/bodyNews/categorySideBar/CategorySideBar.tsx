@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import { useEffect } from 'react'
 import styles from '../BodyNews.module.css'
 import { useRef } from 'react'
 import { cateSelectedState } from '../../../../recoilProvider/cateSelectedState'
@@ -9,12 +9,14 @@ const CategorySideBar = ({ setCateSelected }: any) => {
     const Commercial = useRef<any>()
     const Promotion = useRef<any>()
     const skEvent = useRef<any>()
-    useEffect(()=>{
+    useEffect(() => {
+        console.log('cate State:', cateState);
+        
         if (cateState === '') {
             skEvent.current.classList.remove(`${styles.activeCate}`)
             Promotion.current.classList.remove(`${styles.activeCate}`)
             Commercial.current.classList.remove(`${styles.activeCate}`)
-        }
+        } 
     }, [])
     const handleCommercialSelected = () => {
         setCateSelected('commercial_story')

@@ -1,7 +1,5 @@
-import React, { useEffect } from "react"
-import { Link } from "react-router-dom"
-import styles from './Sk_events.module.css'
-const Sk_events = () => {
+import styles from './SkEvents.module.css'
+const SkEvents = () => {
     return (
         <>
             <div className={`${styles.category_content} ${styles.container}`}>
@@ -213,4 +211,4 @@ const Sk_events = () => {
         </>
     )
 }
-export default Sk_events
+export default SkEvents

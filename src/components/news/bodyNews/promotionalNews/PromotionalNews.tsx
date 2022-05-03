@@ -1,19 +1,17 @@
-import React, { useEffect } from "react"
-import styles from './Commercial_story.module.css'
-import { Link } from "react-router-dom"
-const Commercial_story = () => {
+import styles from './PromotionalNews.module.css'
+const PromotionalNews = () => {
     return (
         <>
             <div className={`${styles.category_content} ${styles.container}`}>
                 <div className={styles.category_main}>
                     <div className={styles.category_main_title}>
                         <span className={styles.span_text}>
-                            <span className={styles.main_title}>Câu chuyện thương hiệu</span>
+                            <span className={styles.main_title}>Tin tức khuyến mại</span>
                         </span>
                     </div>
                     <div className={styles.category_main_content}>
                         <a className={`${styles.post_card} ${styles.alink}`} href="https://tocotocotea.com/blogs/tocotoco-nhan-doi-su-ngot-ngao-mua-le-hoi/">
-                            <img className={`${styles.feature_img} ${styles.image}`} src="https://tocotocotea.com/wp-content/uploads/2021/12/SPM_CHOCO_zalo-1.png" alt="" />
+                            <img className={`${styles.feature_img} ${styles.image}`} src="https://tocotocotea.com/wp-content/uploads/2022/03/03162022_TCTC-X-MRT-banner_zalo-1.png" alt="" />
                             <div className={styles.post_card_content}>
                                 <div className={styles.post_card_title}>
                                     <span className={styles.span_text}>
@@ -33,7 +31,7 @@ const Commercial_story = () => {
                             </div>
                         </a>
                         <a className={`${styles.post_card} ${styles.alink}`} href="https://tocotocotea.com/blogs/tocotoco-nang-tam-gia-tri-nong-san-viet/">
-                            <img className={`${styles.feature_img} ${styles.image}`} src="https://tocotocotea.com/wp-content/uploads/2021/12/SPM_CHOCO_zalo-1.png" alt="" />
+                            <img className={`${styles.feature_img} ${styles.image}`} src="https://tocotocotea.com/wp-content/uploads/2022/03/03162022_TCTC-X-MRT-banner_zalo-1.png" alt="" />
                             <div className={styles.post_card_content}>
                                 <div className={styles.post_card_title}>
                                     <span className={styles.span_text}>
@@ -53,7 +51,7 @@ const Commercial_story = () => {
                             </div>
                         </a>
                         <a className={`${styles.post_card} ${styles.alink}`} href="https://tocotocotea.com/blogs/choco-ngu-coc-kem-cafe-hong-tra-ngu-coc-kem-cafe/">
-                            <img className={`${styles.feature_img} ${styles.image}`} src="https://tocotocotea.com/wp-content/uploads/2021/12/SPM_CHOCO_zalo.png" alt="" />
+                            <img className={`${styles.feature_img} ${styles.image}`} src="https://tocotocotea.com/wp-content/uploads/2022/01/04012022_remind-combo-spm_zalo-1.png" alt="" />
                             <div className={styles.post_card_content}>
                                 <div className={styles.post_card_title}>
                                     <span className={styles.span_text}>
@@ -73,7 +71,7 @@ const Commercial_story = () => {
                             </div>
                         </a>
                         <a className={`${styles.post_card} ${styles.alink}`} href="https://tocotocotea.com/blogs/khang-hang-thi-truong-my_ua-thich-tocotoco/">
-                            <img className={`${styles.feature_img} ${styles.image}`} src="https://tocotocotea.com/wp-content/uploads/2021/12/tocotoco-thi-truong-my.png" alt="" />
+                            <img className={`${styles.feature_img} ${styles.image}`} src="https://tocotocotea.com/wp-content/uploads/2021/03/image-54.webp" alt="" />
                             <div className={styles.post_card_content}>
                                 <div className={styles.post_card_title}>
                                     <span className={styles.span_text}>
@@ -93,7 +91,7 @@ const Commercial_story = () => {
                             </div>
                         </a>
                         <a className={`${styles.post_card} ${styles.alink}`} href="https://tocotocotea.com/tin-tuc-hien-trang-chu/hanh-trinh-8-nam-chinh-phuc-khach-hang-cua-tocotoco/">
-                            <img className={`${styles.feature_img} ${styles.image}`} src="https://tocotocotea.com/wp-content/uploads/2021/12/tocotoco-1-1.png" alt="" />
+                            <img className={`${styles.feature_img} ${styles.image}`} src="https://tocotocotea.com/wp-content/uploads/2021/12/SPM_CHOCO_zalo.png" alt="" />
                             <div className={styles.post_card_content}>
                                 <div className={styles.post_card_title}>
                                     <span className={styles.span_text}>
@@ -113,7 +111,7 @@ const Commercial_story = () => {
                             </div>
                         </a>
                         <a className={`${styles.post_card} ${styles.alink}`} href="https://tocotocotea.com/blogs/tocotoco-tra-sua-tien-phong-su-dung-nong-san-viet/">
-                            <img className={`${styles.feature_img} ${styles.image}`} src="https://tocotocotea.com/wp-content/uploads/2021/12/toco-toco-sinh-nhat-8-tuoi-111216693_680x0.png" alt="" />
+                            <img className={`${styles.feature_img} ${styles.image}`} src="	https://tocotocotea.com/wp-content/uploads/2021/12/GO-88-CU%CC%9B%CC%89A-BA%CC%86%CC%81C_zalo-1.png" alt="" />
                             <div className={styles.post_card_content}>
                                 <div className={styles.post_card_title}>
                                     <span className={styles.span_text}>
@@ -133,7 +131,7 @@ const Commercial_story = () => {
                             </div>
                         </a>
                         <a className={`${styles.post_card} ${styles.alink}`} href="https://tocotocotea.com/tin-tuc-hien-trang-chu/8-nam-phat-trien-vung-manh/">
-                            <img className={`${styles.feature_img} ${styles.image}`} src="https://tocotocotea.com/wp-content/uploads/2021/12/tocotoco-nhuong-quyen-thuong-hieu.png" alt="" />
+                            <img className={`${styles.feature_img} ${styles.image}`} src="https://tocotocotea.com/wp-content/uploads/2021/11/tocotoco-sinh-nhat.png" alt="" />
                             <div className={styles.post_card_content}>
                                 <div className={styles.post_card_title}>
                                     <span className={styles.span_text}>
@@ -153,7 +151,7 @@ const Commercial_story = () => {
                             </div>
                         </a>
                         <a className={`${styles.post_card} ${styles.alink}`} href="https://tocotocotea.com/blogs/tocotoco-bat-mi-cach-san-iphone-13-pro-max/">
-                            <img className={`${styles.feature_img} ${styles.image}`} src="https://tocotocotea.com/wp-content/uploads/2021/11/tocotoco-sinh-nhat.png" alt="" />
+                            <img className={`${styles.feature_img} ${styles.image}`} src="	https://tocotocotea.com/wp-content/uploads/2021/12/tocotoco-8-nam-gan-ket-trieu-trai-tim-1.png" alt="" />
                             <div className={styles.post_card_content}>
                                 <div className={styles.post_card_title}>
                                     <span className={styles.span_text}>
@@ -174,7 +172,7 @@ const Commercial_story = () => {
                         </a>
                     </div>
 
-                    <nav className={`${styles.navigation} ${styles.pagination} ${styles.navigation}`} role="navigation" aria-label="Bài viết">
+                    <nav className={`${styles.navigation} ${styles.pagination} `} role="navigation" aria-label="Bài viết">
                         <h2 className={`${styles.screen_reader_text} ${styles.h2_title}`}>
                             <span className={styles.span_text}>
                                 <span className={styles.span_text}>Điều hướng bài viết</span>
@@ -211,8 +209,7 @@ const Commercial_story = () => {
                 </div >
             </div >
         </>
-
     )
 }
 
-export default Commercial_story
+export default PromotionalNews

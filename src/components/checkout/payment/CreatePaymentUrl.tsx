@@ -1,5 +1,5 @@
 import React from 'react'
-import VnPay from './VnPay.json'
+import VnPay from './VnPay'
 import style from './CreatePaymentUrl.module.css'
 import paynowImg from './imgs/paynow.png'
 import { useState, useEffect } from 'react'

@@ -99,24 +99,6 @@ const Navbar = () => {
             <li className={style.nav_element}>
               <Link onClick={()=>{setCateState(''); window.scroll(0, 0)}} to="/News" className={style.nav_link}>
                 Tin tức
-                <IoIosArrowDown className={style.nav_icons} />
-                <ul ref={subNavNew} className={style.sub_nav_list}>
-                  <li className={style.sub_item}>
-                    <Link onClick={()=>{setCateState('commercial_story')}} to="/News" className={style.sub_link}>
-                      câu chuyện thương hiệu
-                    </Link>
-                  </li>
-                  <li className={style.sub_item}>
-                    <Link onClick={()=>{setCateState('promotional_news')}} to="/News" className={style.sub_link}>
-                      tin tức khuyến mại
-                    </Link>
-                  </li>
-                  <li className={style.sub_item}>
-                    <Link onClick={()=>{setCateState('sk_events')}} to="/News" className={style.sub_link}>
-                      sự kiện
-                    </Link>
-                  </li>
-                </ul>
               </Link>
               <AiOutlinePlus
                 className={style.nav_icon_more}
