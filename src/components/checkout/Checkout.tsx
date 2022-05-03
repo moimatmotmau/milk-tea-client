@@ -353,7 +353,7 @@ const Checkout: React.FC = () => {
                         <div className={style.wrapInputIcon}>
                           <MdPlace />
                         </div>
-                        <input {...register("location")} value={searchAddress} onBlur={()=>{setCheckSearchBox(false)}} onChange={(e) => { handleAddressChange(e) }} type="text" id={style['customerLocation']} placeholder="Địa chỉ người nhận" />
+                        <input {...register("location")} value={searchAddress} onChange={(e) => { handleAddressChange(e)}} type="text" id={style['customerLocation']} placeholder="Địa chỉ người nhận" />
                         {checkSearchBox && <SearchBoxPopup
                           setCheckSearchBox={(a: boolean) => { setCheckSearchBox(a) }}
                           searchAddress={searchAddress}
