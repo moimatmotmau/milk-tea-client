@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import style from './ReturnPaymentResult.module.css'
 import axios from 'axios'
-import { IUser, ICart, IOrders, IOrder } from '../../../interfaces/models'
+import { IUser, ICart, IOrders } from '../../../interfaces/models'
 import OnlinePaymentSuccessPopup from '../popup/OnlinePaymentSuccessPopup'
 import OnlinePaymentFailPopup from '../popup/OnlinePaymentFailPopup'
 import {usersApi, ordersApi } from '../../../api/index'
@@ -33,17 +33,17 @@ const ReturnPaymentResult = () => {
     }
   }
   const updateOrder = async (value: IOrders[]) => {
-    let updateUser = await api
+    await api
       .put(`/${user._id}`, { ...user, orders: value })
       .catch(err => console.log(err))
   }
   const updateCart = async (value: ICart[]) => {
-    let updateCart = await api
+    await api
       .put(`/${user._id}`, { ...user, cart: value })
       .catch(err => console.log(err))
   }
   const updateOrders = async (value: IOrders) => {
-    let updateOrders = await orderApi
+    await orderApi
       .post(`/`, { ...value })
       .catch(err => console.log(err))
   }

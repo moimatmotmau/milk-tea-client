@@ -20,7 +20,7 @@ const RenderListShop: React.FC<{ api: string, area: string }> = ({ api, area }) 
 
     useEffect(() => {
         fetchData(api);
-    }, [])
+    }, [api])
 
     return (
         <div className={styles.list_shop}>

@@ -1,4 +1,4 @@
-import { useRecoilValue, useRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { Button, Container, Modal, Table } from "react-bootstrap";
 import { accountState } from "../../recoilProvider/userProvider";
 import { useState, useEffect } from "react";

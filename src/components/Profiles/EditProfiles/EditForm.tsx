@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
 import { Button } from "react-bootstrap";
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { accountState, initialValues } from "../../../recoilProvider/userProvider";
 import style from "./EditForm.module.css";
 import { IUser } from "../../../interfaces";
@@ -34,7 +34,7 @@ const EditForm: React.FC = () => {
         setUser(response.data)
         setAvatar(response.data.avatar)
       })
-  }, [])
+  }, [api])
 
   const schema = yup.object().shape({
     fullName: yup.string().required("Tên không được để trống"),

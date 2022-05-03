@@ -8,13 +8,10 @@ interface UserAvatar {
 }
 
 const UserAvatar: React.FC<UserAvatar>= ({avatar,register,setAvatar,setImageSelected}) => {
-
-
   const handleChangeAvatar = (e: any) => { 
     const newAvatar = URL.createObjectURL(e.target.files[0])
     setAvatar(newAvatar)
     setImageSelected(e.target.files[0])
-
    }
   return (
     <>

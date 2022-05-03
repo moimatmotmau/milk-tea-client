@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { Container } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
-import { IoIosArrowDown } from 'react-icons/io';
 import { AiFillCloseCircle, AiOutlineLogout, AiOutlinePlus } from 'react-icons/ai';
 import { TiArrowSortedUp } from 'react-icons/ti';
 import { GiHamburgerMenu } from 'react-icons/gi';

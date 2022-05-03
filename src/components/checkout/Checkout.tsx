@@ -11,9 +11,8 @@ import ReactMapGL, { Marker } from 'react-map-gl'
 import { Link } from 'react-router-dom'
 import style from './Checkout.module.css'
 import imgButton from './mapData/checkmapimgs/mapbox-marker-icon-20px-orange.png'
-import listStores from './mapData/listStores'
 import maps from './mapData/Map'
-import { ICart, IFeature, IOrders, IProperties, IUser } from '../../interfaces/models'
+import { ICart, IOrders, IProperties, IUser } from '../../interfaces/models'
 import CreatePaymentUrl from './payment/CreatePaymentUrl'
 import { BackToLoginPupop, CheckCartPopup, DeliveryTimePopup, PromotionCodePopup, SearchBoxPopup, SuccessOrderPopup } from './popup/Popups'
 import { usersApi, ordersApi } from '../../api/index'
@@ -97,17 +96,17 @@ const Checkout: React.FC = () => {
   }
 
   const updateOrder = async (value: IOrders[]) => {
-    let updateUser = await api
+    await api
       .put(`/${user._id}`, { ...user, orders: value })
       .catch(err => console.log(err))
   }
   const updateCart = async (value: ICart[]) => {
-    let updateCart = await api
+    await api
       .put(`/${user._id}`, { ...user, cart: value })
       .catch(err => console.log(err))
   }
   const updateOrders = async (value: IOrders) => {
-    let updateOrders = await orderApi
+    await orderApi
       .post(`/`, { ...value })
       .catch(err => console.log(err))
   }
@@ -279,8 +278,6 @@ const Checkout: React.FC = () => {
   const [searchAddress, setSearchAddress] = useState<string>("")
   const [searchAddressOnClick, setSearchAddressOnClick] = useState<string>("")
   const [list, setList] = useState<Array<any>>([])
-  const [searchAddressStore, setSearchAddressStore] = useState<string>("")
-  const [listStore, setListStore] = useState<Array<any>>([])
   const handleAddressChange = (e: any) => {
     setCheckSearchBox(true);
     let arr: any = maps.features;
@@ -457,7 +454,7 @@ const Checkout: React.FC = () => {
                         listProducts.map((cartItem, index) => {
                           return (
                             <div className={style.productCheckout} key={index}>
-                              <img src={cartItem.productImg} alt="product image" />
+                              <img src={cartItem.productImg} alt="product avatar" />
                               <div className={style.productCheckoutContent}>
                                 <div className={style.title}>{cartItem.name}</div>
                                 <div className={style.customizations}>{cartItem.topping && cartItem.topping.map((item: string) => {
