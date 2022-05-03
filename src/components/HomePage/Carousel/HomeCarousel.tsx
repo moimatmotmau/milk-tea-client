@@ -1,11 +1,10 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Carousel } from 'react-bootstrap';
 import { BsMouse } from 'react-icons/bs';
 import style from './HomeCarousel.module.css'
-import slide1 from './slideshow1_1.png';
+import slide1 from './rose.png';
 import slide2 from './slideshow1_2.png';
-import slide3 from './slideshow1_3.png';
+import slide3 from './milktea.png';
 
 const HomeCarousel = () => {
     return (

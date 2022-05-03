@@ -55,7 +55,6 @@ const Login = () => {
 
 
     function onSubmit(data: any) {
-
         axios.get(`${usersApi}`)
             .then(response => {
                 const datas: IUser[] = response.data
@@ -72,8 +71,6 @@ const Login = () => {
                     handleSetMessage("Tài khoản hoặc mặt khẩu không chính xác")
                 }
             })
-
-
     }
 
     return (

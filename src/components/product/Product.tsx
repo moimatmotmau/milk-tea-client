@@ -499,7 +499,6 @@ const Product: React.FC = memo(() => {
         setOpen={setOpen}
         open={open}
         productDetail={productDetail}
-        // setCartQuantity={setCartQuantity}
         productCarts={productCarts}
         setProductCarts={setProductCarts}
         INIT_DATA={INIT_DATA}
