@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import style from './Login.module.css'
-import logo from './img/logo.jpg'
+import logo from './img/logo-removebg-preview.png'
 import axios from 'axios';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';

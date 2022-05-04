@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import style from "./CreateAccount.module.css"
-import logo from '../login/img/logo.jpg'
+import logo from '../login/img/logo-removebg-preview.png'
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useForm } from "react-hook-form";
