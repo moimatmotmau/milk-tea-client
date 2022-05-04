@@ -4,7 +4,6 @@ import {
   HistoryAndMission, CreateAccount,
   Login, News, CommercialStory, PromotionalNews, SkEvents
 } from './components/index';
-import './App.css';
 import ProfilesWrapper from './components/Profiles/ProfilesWrapper';
 import ProfilesPreview from './components/Profiles/EditProfiles/ProfilesPreview';
 import ProfilesOrder from './components/Profiles/ProfilesOrder'

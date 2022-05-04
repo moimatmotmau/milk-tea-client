@@ -1,5 +1,4 @@
 import { AddCircle, RemoveCircle } from "@mui/icons-material";
-import React from "react";
 import "./cart.css";
 
 export default function Cart({

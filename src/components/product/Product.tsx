@@ -6,7 +6,7 @@ import { useRecoilState } from "recoil";
 import { IProduct, IState } from "../../interfaces";
 import { productState } from "../../recoilProvider/productProvider";
 import { accountState } from "../../recoilProvider/userProvider";
-import { getProduct } from "../../services";
+import { getProduct } from "../../api/index";
 import ScrollToTop from "../scrollToTop/ScrollToTop";
 import CardProduct from "./cardProduct/CardProduct";
 import Cart from "./cart/Cart";

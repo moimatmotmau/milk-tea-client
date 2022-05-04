@@ -1,4 +1,3 @@
-import React from 'react'
 import VnPay from './VnPay'
 import style from './CreatePaymentUrl.module.css'
 import paynowImg from './imgs/paynow.png'
@@ -54,7 +53,7 @@ const CreatePaymentUrl = (props:any) => {
   })
   var amount:number= total;
   var currCode:string = 'VND';
-  // trim cách chuyển thành chuỗi
+  // tim cách chuyển thành chuỗi
   var orderInfo:string = 'Thanh+toan+tra+sua:5'
   var orderType:string = 'other'
   var locale:string = "vn";
