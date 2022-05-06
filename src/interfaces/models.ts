@@ -48,27 +48,27 @@ export interface ICart {
   };
   
   export interface IOrder {
-    name: string;
-    size: string;
-    ice: string;
-    sugar: string;
-    quantitySelect: string;
-    price: string;
-    total: string;
-    topping: string[];
-}
+        name: string;
+        size: string;
+        ice: string;
+        sugar: string;
+        quantitySelect: string;
+        price: string;
+        total: string;
+        topping: string[];
+    }
 
 export interface IOrders {
-    username: string;
-    phone: string;
-    address: string;
-    orders: IOrder[];
-    paid: boolean;
-    status: string;
-    fullName: string;
-    time: string;
-    _id?: string;
-}
+                username: string;
+                phone: string;
+                address: string;
+                orders: IOrder[];
+                paid: boolean;
+                status: string;
+                fullName: string;
+                time: string;
+                _id?: string;
+                }
 
 // map modals
 export interface IProperties {

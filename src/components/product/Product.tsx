@@ -203,11 +203,13 @@ const Product: React.FC = memo(() => {
       return;
     }
     const getData = async () => {
-      const response = await axios.get(
-        `${productsApi}?name=${searchValue}`
-      );
-      const data = await response.data;
-      setData(data);
+      await axios.get(productsApi)
+            .then((res: any) => {
+                const searchItem = res.data.filter((product: any) => (
+                    product.name.toLowerCase().includes(searchValue ? searchValue.toLowerCase() : '')
+                ))
+                setData(searchItem)
+            })
     };
     getData();
   }, [queried, searchValue]);
