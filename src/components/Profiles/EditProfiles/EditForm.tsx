@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Container, Row, Col } from "react-bootstrap";
 import UserAvatar from "./UserAvatar";
 import { useForm } from "react-hook-form";
@@ -11,8 +11,6 @@ import { accountState, initialValues } from "../../../recoilProvider/userProvide
 import style from "./EditForm.module.css";
 import { IUser } from "../../../interfaces";
 import { usersApi, imageApi } from '../../../api/index'
-import { IoClose } from 'react-icons/io5'
-
 
 const EditForm: React.FC = () => {
   const apiImage = `${imageApi}`;
@@ -68,17 +66,6 @@ const EditForm: React.FC = () => {
     resolver: yupResolver(schema),
   });
 
-  const messageModals = useRef<any>()
-  const [mess, setMess] = useState<string>("")
-  const handleSetMessage = (message: string) => {
-    setMess(message);
-    messageModals.current.style.opacity = 1;
-    messageModals.current.style.transform = 'translate(-50%, 150%)';
-    setTimeout(() => {
-      messageModals.current.style.opacity = 0;
-      messageModals.current.style.transform = 'translate(-50%, -100%)';
-    }, 2000);
-  }
   const submitForm = async (data: IUser) => {
     if (imageSelected) {
       const formData = new FormData();
@@ -93,13 +80,15 @@ const EditForm: React.FC = () => {
         axios
           .put(`${api}/${id}`, data)
           .then((res) => {
-            handleSetMessage('Thay đổi thành công')
+            window.alert('Thay đổi thành công!')
             const newData = { ...user, ...data };
             setEditLoad(false)
             localStorage.setItem("account", JSON.stringify(newData));
             setDataUser(newData);
           })
-          .catch((e) => handleSetMessage('Có lỗi xảy ra'));
+          .catch((e) =>
+            window.alert('Có lỗi xảy ra!')
+          );
       });
     } else {
       data.orders = user.orders
@@ -107,106 +96,102 @@ const EditForm: React.FC = () => {
       axios
         .put(`${api}/${id}`, data)
         .then((res) => {
-          handleSetMessage('Thay đổi thành công');
-          const newData = { ...user, ...data };
-          localStorage.setItem("account", JSON.stringify(newData));
-          setDataUser(newData);
-          setEditLoad(false)
+          window.alert('Thay đổi thành công!')
         })
-        .catch((e) => handleSetMessage('Có lỗi xảy ra'));
-    }
-  };
-
-
+        .catch((e) =>
+          window.alert('Có lỗi xảy ra!'))
+      const newData = { ...user, ...data };
+      localStorage.setItem("account", JSON.stringify(newData));
+      setDataUser(newData);
+      setEditLoad(false)
+    };
+  }
   return (
     <>
-      <div ref={messageModals} className={style.messageModal}>
-        <div className={style.messageMessage}>{mess}</div>
-        <div className={style.messageIcon}><IoClose /></div>
+      <div>
+        <Form onSubmit={handleSubmit(submitForm)}>
+          <Container>
+            <UserAvatar
+              avatar={avatar}
+              register={register}
+              setAvatar={setAvatar}
+              setImageSelected={setImageSelected}
+            />
+            <Row className={`justify-content-center mt-4 gx-3`}>
+              <Col xs={12} md={6}>
+                <Form.Group className="mb-3" controlId="formBasicName">
+                  <Form.Label>Họ và tên:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Nhập họ tên..."
+                    {...register("fullName")}
+                    className={style.formInput}
+                  />
+                  <p className="text-danger mt-3">{errors.fullName?.message}</p>
+                </Form.Group>
+              </Col>
+              <Col xs={12} md={6}>
+                <Form.Group className="mb-3" controlId="formBasicPhone">
+                  <Form.Label>Số điện thoại:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Nhập SĐT..."
+                    {...register("phone")}
+                    className={style.formInput}
+                  />
+                  <p className="text-danger mt-3">{errors.phone?.message}</p>
+                </Form.Group>
+              </Col>
+              <Col xs={12} md={6}>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Label>Email:</Form.Label>
+                  <Form.Control
+                    type="email"
+                    placeholder="Nhập Email..."
+                    {...register("email")}
+                    className={style.formInput}
+                  />
+                  <p className="text-danger mt-3">{errors.email?.message}</p>
+                </Form.Group>
+              </Col>
+              <Col xs={12} md={6}>
+                <Form.Group className="mb-3" controlId="formBasicAddress">
+                  <Form.Label>Địa chỉ:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Nhập địa chỉ..."
+                    {...register("address")}
+                    className={style.formInput}
+                  />
+                  <p className="text-danger mt-3">{errors.address?.message}</p>
+                </Form.Group>
+              </Col>
+              <Col xs={12} md={6}>
+                <Form.Group className="mb-3" controlId="formBasicAge">
+                  <Form.Label>Tuổi:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Nhập tuổi..."
+                    {...register("age")}
+                    className={style.formInput}
+                  />
+                  <p className="text-danger mt-3">{errors.age?.message}</p>
+                </Form.Group>
+              </Col>
+            </Row>
+          </Container>
+          <Button
+            disabled={editLoad}
+            variant="success"
+            className={`mb-3`}
+            type="submit"
+            style={{ marginLeft: "50%", transform: "translateX(-50%)" }}
+          >
+            Lưu thay đổi
+          </Button>
+        </Form>
       </div>
-      <Form onSubmit={handleSubmit(submitForm)}>
-        <Container>
-          <UserAvatar
-            avatar={avatar}
-            register={register}
-            setAvatar={setAvatar}
-            setImageSelected={setImageSelected}
-          />
-          <Row className={`justify-content-center mt-4 gx-3`}>
-            <Col xs={12} md={6}>
-              <Form.Group className="mb-3" controlId="formBasicName">
-                <Form.Label>Họ và tên:</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Nhập họ tên..."
-                  {...register("fullName")}
-                  className={style.formInput}
-                />
-                <p className="text-danger mt-3">{errors.fullName?.message}</p>
-              </Form.Group>
-            </Col>
-            <Col xs={12} md={6}>
-              <Form.Group className="mb-3" controlId="formBasicPhone">
-                <Form.Label>Số điện thoại:</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Nhập SĐT..."
-                  {...register("phone")}
-                  className={style.formInput}
-                />
-                <p className="text-danger mt-3">{errors.phone?.message}</p>
-              </Form.Group>
-            </Col>
-            <Col xs={12} md={6}>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email:</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Nhập Email..."
-                  {...register("email")}
-                  className={style.formInput}
-                />
-                <p className="text-danger mt-3">{errors.email?.message}</p>
-              </Form.Group>
-            </Col>
-            <Col xs={12} md={6}>
-              <Form.Group className="mb-3" controlId="formBasicAddress">
-                <Form.Label>Địa chỉ:</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Nhập địa chỉ..."
-                  {...register("address")}
-                  className={style.formInput}
-                />
-                <p className="text-danger mt-3">{errors.address?.message}</p>
-              </Form.Group>
-            </Col>
-            <Col xs={12} md={6}>
-              <Form.Group className="mb-3" controlId="formBasicAge">
-                <Form.Label>Tuổi:</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Nhập tuổi..."
-                  {...register("age")}
-                  className={style.formInput}
-                />
-                <p className="text-danger mt-3">{errors.age?.message}</p>
-              </Form.Group>
-            </Col>
-          </Row>
-        </Container>
-        <Button
-          disabled={editLoad}
-          variant="success"
-          className={`mb-3`}
-          type="submit"
-          style={{ marginLeft: "50%", transform: "translateX(-50%)" }}
-        >
-          Lưu thay đổi
-        </Button>
-      </Form>
     </>
   );
 };
-
 export default EditForm;
