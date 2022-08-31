@@ -11,7 +11,7 @@ import {
 import { accountState } from "../../../recoilProvider/userProvider";
 import "./basicModal.css";
 import style from "./styleBox";
-import {usersApi} from '../../../api/index'
+import { usersApi } from "../../../api/index";
 
 export default function BasicModal({
   open,
@@ -153,15 +153,13 @@ export default function BasicModal({
   //Đẩy cart vào local storage
   const putCart = () => {
     localStorage.setItem("cart", JSON.stringify(productCarts));
-    if (account.id) {
-      axios.put(
-        `${usersApi}/${account.id}`,
-        { ...context.current, cart: productCarts }
-      );
+    if (account?.id) {
+      axios.put(`${usersApi}/${account?.id}`, {
+        ...context.current,
+        cart: productCarts,
+      });
       const getContext = async () => {
-        const res = await axios.get(
-          `${usersApi}/${account.id}`
-        );
+        const res = await axios.get(`${usersApi}/${account?.id}`);
         context.current = res.data;
       };
       getContext();

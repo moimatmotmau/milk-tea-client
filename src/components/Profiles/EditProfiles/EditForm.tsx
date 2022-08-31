@@ -6,18 +6,21 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
 import { Button } from "react-bootstrap";
-import { useRecoilState } from 'recoil';
-import { accountState, initialValues } from "../../../recoilProvider/userProvider";
+import { useRecoilState } from "recoil";
+import {
+  accountState,
+  initialValues,
+} from "../../../recoilProvider/userProvider";
 import style from "./EditForm.module.css";
 import { IUser } from "../../../interfaces";
-import { usersApi, imageApi } from '../../../api/index'
+import { usersApi, imageApi } from "../../../api/index";
 
 const EditForm: React.FC = () => {
   const apiImage = `${imageApi}`;
   const api = `${usersApi}`;
 
   const [dataUser, setDataUser] = useRecoilState<IUser>(accountState);
-  const [avatar, setAvatar] = useState<string>('');
+  const [avatar, setAvatar] = useState<string>("");
   const [user, setUser] = useState<IUser>(initialValues);
   const [editLoad, setEditLoad] = useState<boolean>(false);
   const [imageSelected, setImageSelected] = useState<any>("");
@@ -27,12 +30,11 @@ const EditForm: React.FC = () => {
     reset({ ...dataUser });
   }, [dataUser]);
   useEffect(() => {
-    axios.get(`${api}/${id}`)
-      .then((response) => {
-        setUser(response.data)
-        setAvatar(response.data.avatar)
-      })
-  }, [api])
+    axios.get(`${api}/${id}`).then((response) => {
+      setUser(response.data);
+      setAvatar(response?.data?.avatar);
+    });
+  }, [api]);
 
   const schema = yup.object().shape({
     fullName: yup.string().required("Tên không được để trống"),
@@ -71,41 +73,40 @@ const EditForm: React.FC = () => {
       const formData = new FormData();
       formData.append("file", imageSelected);
       formData.append("upload_preset", "VMilkTea");
-      setEditLoad(true)
+      setEditLoad(true);
       axios.post(apiImage, formData).then((response: any) => {
         // Assign data to Cloudinary image URL
         data.avatar = response.data.secure_url;
-        data.orders = user.orders
+        data.orders = user?.orders;
+        // console.log(user);
         // Put data to Api
         axios
           .put(`${api}/${id}`, data)
           .then((res) => {
-            window.alert('Thay đổi thành công!')
+            console.log(res);
+            window.alert("Thay đổi thành công!");
             const newData = { ...user, ...data };
-            setEditLoad(false)
+            setEditLoad(false);
             localStorage.setItem("account", JSON.stringify(newData));
             setDataUser(newData);
           })
-          .catch((e) =>
-            window.alert('Có lỗi xảy ra!')
-          );
+          .catch((e) => console.log(e));
       });
     } else {
-      data.orders = user.orders
-      setEditLoad(true)
+      data.orders = user.orders;
+      setEditLoad(true);
       axios
         .put(`${api}/${id}`, data)
         .then((res) => {
-          window.alert('Thay đổi thành công!')
+          window.alert("Thay đổi thành công!");
         })
-        .catch((e) =>
-          window.alert('Có lỗi xảy ra!'))
+        .catch((e) => window.alert("Có lỗi xảy ra!"));
       const newData = { ...user, ...data };
       localStorage.setItem("account", JSON.stringify(newData));
       setDataUser(newData);
-      setEditLoad(false)
-    };
-  }
+      setEditLoad(false);
+    }
+  };
   return (
     <>
       <div>

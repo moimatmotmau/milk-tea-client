@@ -1,18 +1,35 @@
+import Dialog from "@mui/material/Dialog";
+import Button from "@mui/material/Button";
+
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+
 import ListIcon from "@mui/icons-material/List";
 import axios from "axios";
 import React, { memo, useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { IProduct, IState } from "../../interfaces";
+import { ICart, IOrders, IProduct, IState } from "../../interfaces";
 import { productState } from "../../recoilProvider/productProvider";
 import { accountState } from "../../recoilProvider/userProvider";
-import { getProduct } from "../../api/index";
+import { getProduct, ordersApi } from "../../api/index";
 import ScrollToTop from "../scrollToTop/ScrollToTop";
 import CardProduct from "./cardProduct/CardProduct";
 import Cart from "./cart/Cart";
 import BasicModal from "./modal/BasicModal";
 import "./product.css";
-import {usersApi, productsApi} from '../../api/index'
+import { usersApi, productsApi } from "../../api/index";
+
+import ConfirmIcon from "./confirm.png";
 
 const Product: React.FC = memo(() => {
   const INIT_DATA: IState = {
@@ -25,12 +42,14 @@ const Product: React.FC = memo(() => {
     sugar: "100sugar",
     ice: "100ice",
     topping: [],
+    cart: [],
   };
 
   var context: any = useRef({});
 
   const [datas, setData] = useState<IProduct[] | null>([]);
   const [open, setOpen] = useState(false);
+  const [openCheckoutModal, setOpenCheckoutModal] = useState(false);
   const [productDetail, setProductDetail] = useState<any>([]);
   // get value search
   const [searchValue, setSearchValue] = useState<string | null>("");
@@ -50,6 +69,8 @@ const Product: React.FC = memo(() => {
   const suachuadeoSection = useRef<HTMLDivElement | null>(null);
 
   const [product, setProduct] = useRecoilState(productState);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (product.name) {
@@ -77,9 +98,7 @@ const Product: React.FC = memo(() => {
 
   useEffect(() => {
     const getContext = async () => {
-      const res = await axios.get(
-        `${usersApi}/${account.id}`
-      );
+      const res = await axios.get(`${usersApi}/${account?.id}`);
       context.current = await res.data;
     };
     getContext();
@@ -92,26 +111,27 @@ const Product: React.FC = memo(() => {
     } else {
       setCheckEmpty("");
     }
-  }, [productCarts.length]);
+  }, [productCarts?.length]);
+
+  useEffect(() => {
+    if (!account._id) {
+      navigate("/login");
+    }
+  }, [account, navigate]);
 
   useEffect(() => {
     //lay cart user dang nhap
-    if (account.id !== "") {
+    if (account?._id !== "") {
       const getContext = async () => {
-        const res = await axios.get(
-          `${usersApi}/${account.id}`
-        );
-        const data = await res.data;
-        setProductCarts(data.cart);
+        try {
+          const res = await axios.get(`${usersApi}/${account?._id}`);
+          const data = await res.data;
+          setProductCarts(data.cart);
+        } catch (error) {
+          console.log(error);
+        }
       };
       getContext();
-    } else {
-      //kiem tra cart local storage
-      const getCartLocalS = localStorage.getItem("cart");
-      if (getCartLocalS) {
-        const parseDataCart = JSON.parse(getCartLocalS!);
-        setProductCarts([...parseDataCart]);
-      }
     }
   }, [account]);
 
@@ -152,16 +172,15 @@ const Product: React.FC = memo(() => {
     localStorage.setItem("cart", JSON.stringify([...items]));
 
     //cap nhat lai cart tren api user
-    if (account.id) {
-      axios.put(
-        `${usersApi}/${account.id}`,
-        { ...context.current, cart: [...items] }
-      );
+    if (account?._id) {
+      axios.put(`${usersApi}/${account._id}`, {
+        ...context.current,
+        cart: [...items],
+      });
       const getContext = async () => {
-        const res = await axios.get(
-          `${usersApi}/${account.id}`
-        );
+        const res = await axios.get(`${usersApi}/${account._id}`);
         context.current = res.data;
+        return context.current;
       };
       getContext();
     }
@@ -181,16 +200,15 @@ const Product: React.FC = memo(() => {
     localStorage.setItem("cart", JSON.stringify([...items]));
 
     //cap nhat lai cart tren api user
-    if (account.id) {
-      axios.put(
-        `${usersApi}/${account.id}`,
-        { ...context.current, cart: [...items] }
-      );
+    if (account?._id) {
+      axios.put(`${usersApi}/${account._id}`, {
+        ...context.current,
+        cart: [...items],
+      });
       const getContext = async () => {
-        const res = await axios.get(
-          `${usersApi}/${account.id}`
-        );
+        const res = await axios.get(`${usersApi}/${account._id}`);
         context.current = res.data;
+        return context.current;
       };
       getContext();
     }
@@ -203,13 +221,14 @@ const Product: React.FC = memo(() => {
       return;
     }
     const getData = async () => {
-      await axios.get(productsApi)
-            .then((res: any) => {
-                const searchItem = res.data.filter((product: any) => (
-                    product.name.toLowerCase().includes(searchValue ? searchValue.toLowerCase() : '')
-                ))
-                setData(searchItem)
-            })
+      await axios.get(productsApi).then((res: any) => {
+        const searchItem = res.data.filter((product: any) =>
+          product.name
+            .toLowerCase()
+            .includes(searchValue ? searchValue.toLowerCase() : "")
+        );
+        setData(searchItem);
+      });
     };
     getData();
   }, [queried, searchValue]);
@@ -223,19 +242,94 @@ const Product: React.FC = memo(() => {
     setProductCarts([]);
     localStorage.setItem("cart", JSON.stringify([]));
     //cap nhat lai cart tren api user
-    if (account.id) {
-      axios.put(
-        `${usersApi}/${account.id}`,
-        { ...context.current, cart: [] }
-      );
+    if (account?._id) {
+      axios.put(`${usersApi}/${account.id}`, { ...context.current, cart: [] });
       const getContext = async () => {
-        const res = await axios.get(
-          `${usersApi}/${account.id}`
-        );
+        const res = await axios.get(`${usersApi}/${account.id}`);
         context.current = res.data;
+        return context.current;
       };
       getContext();
     }
+  };
+
+  const api = axios.create({
+    baseURL: `${usersApi}`,
+  });
+  const orderApi = axios.create({
+    baseURL: `${ordersApi}`,
+  });
+
+  const updateCart = async (value: ICart[]) => {
+    await api
+      .put(`/${account._id}`, { ...account, cart: value })
+      .catch((err) => console.log(err));
+  };
+
+  const updateOrder = async (value: IOrders[]) => {
+    await api
+      .put(`/${account._id}`, { ...account, orders: value, cart: [] })
+      .catch((err) => console.log(err));
+  };
+
+  const updateOrders = async (value: IOrders) => {
+    await orderApi.post(`/`, { ...value }).catch((err) => console.log(err));
+  };
+
+  const handleClose = () => {
+    setOpenCheckoutModal(false);
+  };
+
+  const handleOrders = () => {
+    const value2 = productCarts.map((value) => {
+      return {
+        name: value.name,
+        size: value.size,
+        ice: value.ice,
+        sugar: value.sugar,
+        quantitySelect: Number(value.quantitySelect),
+        price: Number(value.price),
+        total: Number(value.quantitySelect) * Number(value.price),
+        topping: value.topping,
+      };
+    });
+
+    const time = new Date();
+
+    let hour =
+      time.getHours() < 10 ? `0${time.getHours()}` : `${time.getHours()}`;
+    let minute =
+      time.getMinutes() < 10 ? `0${time.getMinutes()}` : `${time.getMinutes()}`;
+    let second =
+      time.getSeconds() < 10 ? `0${time.getSeconds()}` : `${time.getSeconds()}`;
+
+    const orders: any = {
+      username: account.username,
+      phone: account.phone,
+      address: account.address,
+      orders: value2,
+      paid: false,
+      status: "1",
+      fullName: account.fullName,
+      time: `${hour}:${minute}:${second}  ${time.getDate()}/${
+        time.getMonth() + 1
+      }/${time.getFullYear()}`,
+    };
+    try {
+      updateCart([]);
+      updateOrder(orders);
+      setOpenCheckoutModal(false);
+      updateOrders(orders);
+      setProductCarts([]);
+      alert("Thành công !");
+      localStorage.removeItem("cart");
+    } catch (error) {
+      alert("Có Lỗi hãy thử lại !");
+    }
+  };
+
+  const handleClickOpen = () => {
+    setOpenCheckoutModal(true);
   };
 
   return (
@@ -434,8 +528,8 @@ const Product: React.FC = memo(() => {
                             return t === "1"
                               ? "trân châu sương mai"
                               : t === "2"
-                                ? "hạt rẻ"
-                                : "trân châu baby";
+                              ? "hạt rẻ"
+                              : "trân châu baby";
                           })}
                           cartIce={item.ice === "100ice" ? "100" : "50"}
                           cartSugar={item.sugar === "100sugar" ? "100" : "50"}
@@ -458,32 +552,37 @@ const Product: React.FC = memo(() => {
                     alt=""
                   ></img>
                   x{" "}
-                  {productCarts.reduce(
-                    (total, currentValue) =>
-                      (total = total + currentValue.quantitySelect!),
-                    0
-                  )}
+                  {productCarts.length > 0
+                    ? productCarts.reduce(
+                        (total, currentValue) =>
+                          (total = total + currentValue.quantitySelect!),
+                        0
+                      )
+                    : null}
                   ={" "}
-                  {productCarts
-                    .reduce(
-                      (total, currentValue) =>
-                      (total =
-                        total +
-                        currentValue.quantitySelect! *
-                        (+currentValue.price! +
-                          currentValue.topping.length * 9000)),
-                      0
-                    )
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}{" "}
-                  đ
+                  {productCarts.length > 0 &&
+                    productCarts
+                      .reduce(
+                        (total, currentValue) =>
+                          (total =
+                            total +
+                            currentValue.quantitySelect! *
+                              (+currentValue.price! +
+                                currentValue.topping.length * 9000)),
+                        0
+                      )
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}{" "}
                 </div>
                 <div className="col-lg-12 col-5">
-                  <Link to="/checkout">
-                    <button type="button" className="btn custom-btn-pay">
-                      Thanh toán
-                    </button>
-                  </Link>
+                  <button
+                    type="button"
+                    className="btn custom-btn-pay"
+                    onClick={handleClickOpen}
+                    disabled={!productCarts.length}
+                  >
+                    Thanh toán
+                  </button>
                 </div>
               </div>
             </div>
@@ -508,6 +607,87 @@ const Product: React.FC = memo(() => {
         setSeletedProduct={setSeletedProduct}
         context={context}
       />
+
+      <div>
+        <Dialog
+          open={openCheckoutModal}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            <div className="confirm-modal-wrap">
+              <img
+                src={ConfirmIcon}
+                className="confirm-icon"
+                alt="confirm -icon"
+              />
+              <h3 className="confirm-title">Xác nhận đặt hàng</h3>
+            </div>
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              <TableContainer component={Paper}>
+                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Number order</TableCell>
+                      <TableCell align="right">Image</TableCell>
+                      <TableCell align="right">Name</TableCell>
+                      <TableCell align="right">Price</TableCell>
+                      <TableCell align="right">Quantity</TableCell>
+                      <TableCell align="right">Size</TableCell>
+                      <TableCell align="right">ToTal Price</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {productCarts.map((product, index) => (
+                      <TableRow
+                        key={product.id}
+                        sx={{
+                          "&:last-child td, &:last-child th": { border: 0 },
+                        }}
+                      >
+                        <TableCell component="th" scope="row">
+                          {index + 1}
+                        </TableCell>
+                        <TableCell align="right">
+                          <img
+                            src={product.productImg}
+                            style={{
+                              width: "50px",
+                              height: "50px",
+                              objectFit: "cover",
+                            }}
+                            alt="product-img"
+                          />
+                        </TableCell>
+                        <TableCell align="right">{product.name}</TableCell>
+                        <TableCell align="right">{product.price}</TableCell>
+                        <TableCell align="right">
+                          {product.quantitySelect}
+                        </TableCell>
+                        <TableCell align="right">{product.size}</TableCell>
+                        <TableCell align="right">
+                          {product.quantitySelect &&
+                            product.price &&
+                            product.quantitySelect * product.price}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose}>Quay lại</Button>
+            <Button onClick={handleOrders} autoFocus>
+              Đặt hàng
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
     </div>
   );
 });
